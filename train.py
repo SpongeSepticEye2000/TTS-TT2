@@ -19,7 +19,7 @@ from hparams import create_hparams
 
 def reduce_tensor(tensor, n_gpus):
     rt = tensor.clone()
-    dist.all_reduce(rt, op=dist.reduce_op.SUM)
+    dist.all_reduce(rt, op=dist.ReduceOp.SUM)
     rt /= n_gpus
     return rt
 
